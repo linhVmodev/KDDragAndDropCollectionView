@@ -64,6 +64,7 @@ public class KDDragAndDropManager: NSObject, UIGestureRecognizerDelegate {
         var dataItem : AnyObject
     }
     var bundle : Bundle?
+    var didEndDrag: ((_ bundle: Bundle, _ gesture: UILongPressGestureRecognizer) -> Void)?
     
     public init(canvas : UIView, collectionViews : [UIView]) {
         
@@ -215,6 +216,7 @@ public class KDDragAndDropManager: NSObject, UIGestureRecognizerDelegate {
             
             bundle.representationImageView.removeFromSuperview()
             sourceDraggable.stopDragging()
+            didEndDrag?(bundle, recogniser)
             
         default:
             break
