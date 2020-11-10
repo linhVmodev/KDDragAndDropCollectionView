@@ -57,11 +57,11 @@ public class KDDragAndDropManager: NSObject, UIGestureRecognizerDelegate {
     
     
     public struct Bundle {
-        var offset : CGPoint = CGPoint.zero
-        var sourceDraggableView : UIView
-        var overDroppableView : UIView?
-        var representationImageView : UIView
-        var dataItem : AnyObject
+        public var offset : CGPoint = CGPoint.zero
+        public var sourceDraggableView : UIView
+        public var overDroppableView : UIView?
+        public var representationImageView : UIView
+        public var dataItem : AnyObject
     }
     var bundle : Bundle?
     public var didEndDrag: ((_ bundle: Bundle, _ gesture: UILongPressGestureRecognizer) -> Void)?
