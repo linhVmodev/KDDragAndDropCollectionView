@@ -64,6 +64,7 @@ public class KDDragAndDropManager: NSObject, UIGestureRecognizerDelegate {
         public var dataItem : AnyObject
     }
     var bundle : Bundle?
+    public var didBeginDrag: (() -> Void)?
     public var didEndDrag: ((_ bundle: Bundle, _ gesture: UILongPressGestureRecognizer) -> Void)?
     
     public init(canvas : UIView, collectionViews : [UIView]) {
@@ -138,6 +139,7 @@ public class KDDragAndDropManager: NSObject, UIGestureRecognizerDelegate {
         case .began :
             self.canvas.addSubview(bundle.representationImageView)
             sourceDraggable.startDraggingAtPoint(pointOnSourceDraggable)
+            didBeginDrag?()
             
         case .changed :
             
